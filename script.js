@@ -1,146 +1,42 @@
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Nosotros • PopsiCool</title>
-  <link rel="stylesheet" href="styles.css"/>
-</head>
-<body>
-  <nav class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="index.html"><img src="assets/img/logo.png" alt="">PopsiCool</a>
-      <div class="menu">
-        <a href="nosotros.html">Nosotros</a>
-        <a href="impacto.html">Impacto</a>
-        <a href="historias.html">Historias</a>
-        <a href="economia.html">Economía circular</a>
-        <a href="menu.html">Menú</a>
-        <a href="contacto.html">Contacto</a>
-      </div>
-    </div>
-  </nav>
+/* ====== PopsiCool – scripts ====== */
 
-  <main class="container section">
-    <div class="glass card">
-      <h1 class="h2" style="margin-bottom:6px">Nuestro equipo</h1>
-      <p class="lead">Haz clic en cada nombre para ver foto, breve historia y su LinkedIn.</p>
-    </div>
+// Contadores animados (home)
+function animateCounter(el){
+  const target = +el.dataset.target || 0;
+  const dur = 1200; // ms
+  const start = performance.now();
+  function step(t){
+    const p = Math.min(1, (t - start)/dur);
+    el.textContent = Math.floor(p * target).toLocaleString();
+    if(p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+function initCounters(){
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.querySelectorAll('[data-target]').forEach(animateCounter);
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.35});
+  document.querySelectorAll('.kpis').forEach(k=>io.observe(k));
+}
 
-    <div class="glass acc" style="margin-top:16px">
-      <!-- 1 John -->
-      <div class="acc-item">
-        <button class="acc-btn">John Rodrique Napier <small>— Gerente General</small> <span>▾</span></button>
-        <div class="acc-panel">
-          <div class="grid-3">
-            <div class="card"><img src="assets/img/socios/john.jpg" alt="John"></div>
-            <div class="card" style="grid-column: span 2;">
-              <h3>Historia</h3>
-              <p>Espacio para tu reseña (liderazgo, visión estratégica, coordinación de cumbre, etc.).</p>
-              <p><a class="btn primary" href="#" target="_blank">LinkedIn</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
+// Acordeón (Nosotros)
+function initAccordion(){
+  document.querySelectorAll('.acc-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const item = btn.closest('.acc-item');
+      const open = item.classList.contains('open');
+      document.querySelectorAll('.acc-item').forEach(i=>i.classList.remove('open'));
+      if(!open) item.classList.add('open');
+    });
+  });
+}
 
-      <!-- 2 Wesberny -->
-      <div class="acc-item">
-        <button class="acc-btn">Wesberny Exantus Agar <small>— Gerente Financiera</small> <span>▾</span></button>
-        <div class="acc-panel">
-          <div class="grid-3">
-            <div class="card"><img src="assets/img/socios/wesberny.jpg" alt="Wesberny"></div>
-            <div class="card" style="grid-column: span 2;">
-              <h3>Historia</h3>
-              <p>Gestión presupuestal, costos y precios, flujo de caja y metas de rentabilidad.</p>
-              <p><a class="btn primary" href="#" target="_blank">LinkedIn</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3 Martín -->
-      <div class="acc-item">
-        <button class="acc-btn">Martín Cun López <small>— Gerente de Producción</small> <span>▾</span></button>
-        <div class="acc-panel">
-          <div class="grid-3">
-            <div class="card"><img src="assets/img/socios/martin.jpg" alt="Martín"></div>
-            <div class="card" style="grid-column: span 2;">
-              <h3>Historia</h3>
-              <p>Calidad, inocuidad, LPA, estandarización de recetas y eficiencia de lote.</p>
-              <p><a class="btn primary" href="#" target="_blank">LinkedIn</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4 Daniela -->
-      <div class="acc-item">
-        <button class="acc-btn">Daniela Ortíz Batalla <small>— Gerente de Marketing</small> <span>▾</span></button>
-        <div class="acc-panel">
-          <div class="grid-3">
-            <div class="card"><img src="assets/img/socios/daniela.jpg" alt="Daniela"></div>
-            <div class="card" style="grid-column: span 2;">
-              <h3>Historia</h3>
-              <p>Identidad visual, storytelling, campañas, foto/video y señalética.</p>
-              <p><a class="btn primary" href="#" target="_blank">LinkedIn</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5 Denner -->
-      <div class="acc-item">
-        <button class="acc-btn">Denner Enock Madrid <small>— Gerente Ambiental</small> <span>▾</span></button>
-        <div class="acc-panel">
-          <div class="grid-3">
-            <div class="card"><img src="assets/img/socios/denner.jpg" alt="Denner"></div>
-            <div class="card" style="grid-column: span 2;">
-              <h3>Historia</h3>
-              <p>Flujo de residuos, reciclaje de envases, talleres de flor de Jamaica y papel maché.</p>
-              <p><a class="btn primary" href="#" target="_blank">LinkedIn</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 6 Marian (con LinkedIn real) -->
-      <div class="acc-item open">
-        <button class="acc-btn">Marían Pérez Pizarro <small>— Co-Gerente de ventas</small> <span>▾</span></button>
-        <div class="acc-panel">
-          <div class="grid-3">
-            <div class="card"><img src="assets/img/socios/marian.jpg" alt="Marían"></div>
-            <div class="card" style="grid-column: span 2;">
-              <h3>Perfil</h3>
-              <p><b>Perfil comercial</b> con lectura de mercado; convierte insights en ofertas, alianzas y activaciones que mueven volumen sin perder identidad.</p>
-              <p><b>Rol:</b> lidera ventas y canales (cafetería/activaciones), combos y promos, alianzas y sampling, entrenamiento al equipo de cara al cliente.</p>
-              <p><b>Skills:</b> Ventas & trade marketing · Gestión de canal · Promos & bundles · CRM básico · Pitch y cierres · Relacionamiento.</p>
-              <p><a class="btn primary" target="_blank"
-                href="https://www.linkedin.com/in/marian-p%C3%A9rez-pizarro-191172311/">
-                LinkedIn de Marían</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 7 Renie -->
-      <div class="acc-item">
-        <button class="acc-btn">Renie Janine Ortega <small>— Gerente Social</small> <span>▾</span></button>
-        <div class="acc-panel">
-          <div class="grid-3">
-            <div class="card"><img src="assets/img/socios/renie.jpg" alt="Renie"></div>
-            <div class="card" style="grid-column: span 2;">
-              <h3>Historia</h3>
-              <p>Relación con comunidades, voluntariado, historias y medición de impacto social.</p>
-              <p><a class="btn primary" href="#" target="_blank">LinkedIn</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <footer class="footer">© 2025 PopsiCool</footer>
-  <script src="script.js"></script>
-</body>
-</html>
+document.addEventListener('DOMContentLoaded', ()=>{
+  initCounters();
+  initAccordion();
+});
