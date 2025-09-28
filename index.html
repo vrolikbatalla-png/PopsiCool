@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PopsiCool — Helado artesanal, ciencia y comunidad</title>
+  <meta name="description" content="PopsiCool: Peligrosa Tentación con propósito. Helado artesanal, sostenibilidad y comunidad.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <div class="brand">
+      <span class="logo">🍦</span>
+      <span class="brand-name">PopsiCool</span>
+    </div>
+    <nav>
+      <a href="#home">Inicio</a>
+      <a href="#about">Quiénes somos</a>
+      <a href="#sabores">Sabores</a>
+      <a href="#impacto">Impacto</a>
+      <a href="#kpis">KPIs</a>
+      <a href="#contacto" class="btn">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<section id="home" class="hero">
+  <div class="container hero-inner">
+    <h1>Helado artesanal, ciencia y comunidad</h1>
+    <p>“Peligrosa Tentación con propósito”</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#sabores">Ver sabores</a>
+      <a class="btn btn-ghost" href="#impacto">Nuestro impacto</a>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="container grid-2">
+    <div>
+      <h2>Quiénes somos</h2>
+      <p>Empresa estudiantil de la Universidad EARTH. Elaboramos helado artesanal con técnica (pasteurización, maduración, mantecación), alegría y compromiso social.</p>
+      <ul class="check">
+        <li>Artesanía + BPM</li>
+        <li>Economía circular (reuso de envases)</li>
+        <li>Educación y comunidad</li>
+      </ul>
+    </div>
+    <div class="card photo-card">
+      <img src="assets/hero.jpg" alt="PopsiCool hero" />
+    </div>
+  </div>
+</section>
+
+<section id="sabores" class="section alt">
+  <div class="container">
+    <h2>Sabores del cuatrimestre</h2>
+    <div class="cards">
+      <article class="card flavor"><h3>Dulce de Leche</h3><p>Héroe cremoso.</p></article>
+      <article class="card flavor"><h3>Dulce de Jamaica</h3><p>Sirope de segunda extracción.</p></article>
+      <article class="card flavor"><h3>Naranja Holandesa</h3><p>Fresco y cítrico.</p></article>
+      <article class="card flavor"><h3>Chocobanano / Choco Chips</h3><p>Clásico favorito.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="impacto" class="section">
+  <div class="container grid-2">
+    <div>
+      <h2>Impacto & ODS</h2>
+      <p>Taller Reciclaje & Papel Maché: <em>Antes → Usado → Transformado</em>. Barriles de clasificación (Vidrio, Papel, Orgánico, Ordinarios). Jamaica como pigmento (demo de pH).</p>
+      <div class="badges">
+        <span class="badge">ODS 12</span>
+        <span class="badge">ODS 6</span>
+        <span class="badge">ODS 11</span>
+      </div>
+    </div>
+    <div class="card kpi-card">
+      <h3>Indicadores (demo)</h3>
+      <ul class="kpis">
+        <li><span class="kpi-label">Envases reusados</span><span class="kpi-value" id="kpi-envases">124</span></li>
+        <li><span class="kpi-label">Participantes talleres</span><span class="kpi-value" id="kpi-talleres">86</span></li>
+        <li><span class="kpi-label">NPS</span><span class="kpi-value" id="kpi-nps">9.2</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="kpis" class="section alt">
+  <div class="container">
+    <h2>KPIs</h2>
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr><th>Métrica</th><th>Valor</th><th>Notas</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Ventas por sabor</td><td>—</td><td>Completar</td></tr>
+          <tr><td>Rotación (días)</td><td>—</td><td>Completar</td></tr>
+          <tr><td>Margen estimado</td><td>—</td><td>Completar</td></tr>
+          <tr><td>kWh/kg</td><td>—</td><td>Completar</td></tr>
+          <tr><td>L agua/kg</td><td>—</td><td>Completar</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="section">
+  <div class="container grid-2">
+    <div>
+      <h2>Contacto</h2>
+      <p>Instagram: @PopsiCool · WhatsApp/Correo: ______</p>
+      <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Abrir SharePoint</a>
+    </div>
+    <form class="card form" onsubmit="return false;">
+      <h3>Escríbenos</h3>
+      <label>Nombre<input type="text" placeholder="Tu nombre"></label>
+      <label>Email<input type="email" placeholder="Tu correo"></label>
+      <label>Mensaje<textarea rows="4" placeholder="¿Cómo podemos ayudarte?"></textarea></label>
+      <button class="btn btn-primary" type="submit">Enviar</button>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>PopsiCool — Peligrosa Tentación con propósito · EARTH</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

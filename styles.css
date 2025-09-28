@@ -1,0 +1,51 @@
+:root{
+  --cream:#F5EFE7;
+  --surface:#FBF8F4;
+  --espresso:#2E2A27;
+  --text-2:#6B615A;
+  --border:#E6D9C8;
+  --green:#1B6C1D;
+  --pink:#F699CA;
+}
+*{box-sizing:border-box}
+body{margin:0; font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--espresso); background:var(--cream); line-height:1.6}
+.container{max-width:1100px; margin:0 auto; padding:0 24px}
+.site-header{position:sticky; top:0; z-index:1000; background:rgba(245,239,231,.85); backdrop-filter: blur(6px); border-bottom:1px solid var(--border)}
+.nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+.brand{display:flex; align-items:center; gap:10px; font-weight:800; color:var(--espresso)}
+.brand .brand-name{font-size:18px}
+nav a{margin:0 10px; text-decoration:none; color:var(--espresso); font-weight:600}
+nav a.btn{margin-left:16px}
+.hero{background:url('assets/hero.jpg') center/cover no-repeat fixed; color:#fff; text-align:left; padding:120px 0 140px; position:relative}
+.hero:before{content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.25))}
+.hero .hero-inner{position:relative; z-index:1}
+.hero h1{font-size:48px; margin:0 0 12px}
+.hero p{font-size:20px; opacity:.95}
+.section{padding:72px 0}
+.section.alt{background:var(--surface)}
+.grid-2{display:grid; grid-template-columns:1fr 1fr; gap:32px}
+.card{background:#fff; border:1px solid var(--border); border-radius:16px; padding:20px; box-shadow:0 10px 24px rgba(0,0,0,.06)}
+.photo-card img{width:100%; border-radius:12px}
+.cards{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
+.card.flavor h3{margin:0 0 6px}
+.check{padding-left:18px}
+.check li{margin:6px 0}
+.badges{display:flex; gap:10px; margin-top:8px}
+.badge{background:var(--surface); border:1px solid var(--border); border-radius:999px; padding:6px 12px; font-weight:600}
+.kpi-card h3{margin-top:0}
+.kpis{list-style:none; padding:0; margin:0}
+.kpis li{display:flex; align-items:center; justify-content:space-between; padding:10px 0; border-bottom:1px dashed var(--border)}
+.kpi-value{font-size:28px; font-weight:800; color:var(--green)}
+.table-responsive{overflow-x:auto}
+table{width:100%; border-collapse:collapse; background:#fff; border:1px solid var(--border); border-radius:12px; overflow:hidden}
+th,td{padding:14px 16px; border-bottom:1px solid var(--border); text-align:left}
+th{background:#fff; font-weight:800}
+.form label{display:block; font-weight:600; margin:8px 0 6px}
+.form input,.form textarea{width:100%; padding:12px 14px; border:1px solid var(--border); border-radius:10px; font:inherit; color:var(--espresso); background:var(--surface)}
+.btn{display:inline-block; padding:12px 18px; border-radius:12px; font-weight:800; border:1px solid var(--green); color:var(--green); background:transparent; text-decoration:none}
+.btn-primary{background:var(--green); color:#fff; border-color:var(--green)}
+.btn-ghost{background:rgba(255,255,255,.15); color:#fff; border-color:rgba(255,255,255,.35)}
+.btn:hover{transform:translateY(-1px); box-shadow:0 8px 18px rgba(0,0,0,.08)}
+.footer{padding:36px 0; border-top:1px solid var(--border); background:rgba(251,248,244,.8)}
+@media (max-width: 900px){.grid-2{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.hero{padding:100px 0 120px}.hero h1{font-size:38px}}
+@media (max-width: 600px){.cards{grid-template-columns:1fr}}
