@@ -1,141 +1,59 @@
-/* ===== Paleta desde el logo (pasteles + verdes) ===== */
-:root{
-  --mint: #B8F7CE;
-  --mint-2: #A2EFC0;
-  --green: #1E6F3D;
-  --green-2:#2B8A57;
-  --forest:#114027;
-  --pink:#F3A6CF;
-  --lilac:#CFA8F0;
-  --cream:#FFF6E6;
-  --gold:#E6BE7A;
-  --ink:#2E2E2E;
-  --text:#2E2E2E;
-  --muted:#647067;
-  --card-bg: rgba(255,255,255,.58);
-  --blur: 10px;
-  --radius: 18px;
-  --shadow: 0 10px 40px rgba(17,64,39,.18);
-}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Menú • PopsiCool</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html"><img src="assets/img/logo.png" alt="">PopsiCool</a>
+      <div class="menu">
+        <a href="nosotros.html">Nosotros</a>
+        <a href="impacto.html">Impacto</a>
+        <a href="historias.html">Historias</a>
+        <a href="economia.html">Economía circular</a>
+        <a href="menu.html">Menú</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+    </div>
+  </nav>
 
-/* ===== Reset breve ===== */
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
-  color:var(--text);
-  line-height:1.55;
-}
+  <main class="container section">
+    <div class="glass card">
+      <h1 class="h2">Sabores & precios</h1>
+      <p class="lead">Tamaños: 8oz (₡) y 16oz (₡). Ingredientes locales, procesos limpios.</p>
+    </div>
 
-/* ===== Fondo fijo ===== */
-.bg-fixed{
-  position:fixed; inset:0;
-  background:
-    radial-gradient(60% 50% at 20% 10%, rgba(179,247,206,.55), transparent 60%),
-    radial-gradient(60% 60% at 85% 20%, rgba(207,168,240,.35), transparent 65%),
-    radial-gradient(50% 50% at 50% 85%, rgba(255,246,230,.65), transparent 60%),
-    linear-gradient(180deg, #f9faf9, #f0f3f1);
-  z-index:-2;
-}
-.bg-fixed::after{
-  content:"";
-  position:absolute; inset:0;
-  background-image:url('hero.jpg'); /* cámbialo por una foto del equipo */
-  background-size:cover; background-position:center;
-  opacity:.12;
-}
+    <div class="grid-3" style="margin-top:16px">
+      <!-- Producto 1 -->
+      <div class="glass card">
+        <img src="assets/productos/sabor1.jpg" alt="Dulce de leche">
+        <h3>Dulce de leche</h3>
+        <small>Cremoso con cintas de caramelo artesanal.</small>
+        <p><b>8oz:</b> ₡XXXX · <b>16oz:</b> ₡YYYY</p>
+      </div>
+      <!-- Producto 2 -->
+      <div class="glass card">
+        <img src="assets/productos/sabor2.jpg" alt="Naranja holandesa">
+        <h3>Naranja holandesa</h3>
+        <small>Toques cítricos y notas lácteas equilibradas.</small>
+        <p><b>8oz:</b> ₡XXXX · <b>16oz:</b> ₡YYYY</p>
+      </div>
+      <!-- Producto 3 -->
+      <div class="glass card">
+        <img src="assets/productos/sabor3.jpg" alt="Hibiscus (Flor de Jamaica)">
+        <h3>Hibiscus</h3>
+        <small>Color natural de flor de Jamaica reusada (economía circular).</small>
+        <p><b>8oz:</b> ₡XXXX · <b>16oz:</b> ₡YYYY</p>
+      </div>
+      <!-- Agrega más… -->
+    </div>
+  </main>
 
-/* ===== Lienzo flotante ===== */
-.page{
-  max-width:1100px;
-  margin:24px auto;
-  padding:18px;
-  background:var(--card-bg);
-  backdrop-filter: blur(var(--blur));
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
-/* ===== Nav ===== */
-.nav{
-  display:flex; align-items:center; justify-content:space-between;
-  gap:12px; padding:6px 10px 2px;
-}
-.brand{display:flex; align-items:center; gap:10px; font-weight:800}
-.brand img{height:36px; width:auto}
-.brand span{letter-spacing:.5px}
-
-.nav nav a{
-  text-decoration:none; color:var(--forest); font-weight:600;
-  margin-left:18px; padding:8px 10px; border-radius:12px;
-}
-.nav nav a:hover{ background:var(--mint); }
-
-/* ===== Hero ===== */
-.hero{ text-align:center; padding:28px 10px 8px;}
-.hero h1{ font-size: clamp(38px, 6vw, 64px); margin:.2rem 0; color:var(--forest);}
-.tag{ color:var(--green-2); font-weight:700; letter-spacing:.3px; }
-.lead{ max-width:800px; margin:10px auto 0; color:var(--ink); }
-
-.mv{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:22px auto; max-width:900px}
-.mv div{ background:rgba(255,255,255,.65); border-radius:16px; padding:16px; border:1px solid #e7efe7}
-
-.cta-bar{ display:flex; gap:12px; justify-content:center; margin:12px 0 8px;}
-.btn{ display:inline-block; padding:12px 18px; border-radius:100px; text-decoration:none; font-weight:700}
-.btn.primary{ background:var(--green-2); color:#fff}
-.btn.primary:hover{ background:var(--green)}
-.btn.ghost{ border:2px solid var(--green-2); color:var(--green-2)}
-.btn.ghost:hover{ background:var(--mint); }
-
-.metrics{
-  display:grid; grid-template-columns:repeat(6,1fr); gap:10px;
-  margin:14px auto 6px; max-width:950px;
-}
-.metrics div{ background:rgba(255,255,255,.7); padding:12px; border-radius:14px; border:1px solid #e6efe6}
-.metrics span{ display:block; font-size:clamp(18px,3.2vw,28px); font-weight:800; color:var(--forest)}
-.metrics small{ color:var(--muted) }
-
-/* ===== Secciones ===== */
-.section{ padding:28px 8px 8px; }
-.section h2{ font-size:clamp(28px,4.5vw,40px); color:var(--forest); margin:0 0 8px }
-.section-lead{ color:var(--muted); max-width:850px }
-
-.sub{ margin-top:22px; color:var(--green-2) }
-
-.accordion details{
-  background:rgba(255,255,255,.7); border:1px solid #e6efe6; border-radius:14px;
-  padding:12px; margin:10px 0;
-}
-.accordion summary{ cursor:pointer; font-weight:700; color:var(--forest) }
-.person{ display:flex; gap:14px; padding-top:10px }
-.person img{ width:140px; height:160px; object-fit:cover; border-radius:14px; border:3px solid var(--mint) }
-.link{ color:var(--green-2); text-decoration:none; font-weight:700 }
-.link:hover{ text-decoration:underline }
-
-.gallery{ margin-top:12px; }
-.gallery img{ width:100%; border-radius:16px }
-
-.grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:8px }
-.grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:8px }
-
-.card{ background:rgba(255,255,255,.7); border:1px solid #e6efe6; border-radius:14px; padding:14px }
-.product img{ width:100%; height:160px; object-fit:cover; border-radius:10px; margin-bottom:8px }
-.story .ph, .step .ph, .card .ph{ background: repeating-linear-gradient(45deg,#f5faf6,#f5faf6 8px,#edf6f0 8px,#edf6f0 16px); border-radius:12px; height:160px; display:flex; align-items:center; justify-content:center; color:#6f7b71 }
-
-.chips{ display:flex; flex-wrap:wrap; gap:8px; padding:0; list-style:none; margin:10px 0 }
-.chips li{ background:var(--mint); color:var(--forest); border:1px solid #cfe9d8; padding:6px 10px; border-radius:999px; font-weight:700 }
-
-.contact{ background:rgba(255,255,255,.7); border:1px solid #e6efe6; border-radius:14px; padding:14px; margin-top:8px }
-
-.footer{ text-align:center; padding:16px 8px 22px; color:var(--muted) }
-
-/* ===== Responsivo ===== */
-@media (max-width:900px){
-  .metrics{ grid-template-columns:repeat(3,1fr) }
-  .mv{ grid-template-columns:1fr }
-  .grid-3{ grid-template-columns:1fr 1fr }
-}
-@media (max-width:600px){
-  .nav nav a{ margin-left:8px }
-  .grid-2, .grid-3{ grid-template-columns:1fr }
-}
+  <footer class="footer">© 2025 PopsiCool</footer>
+  <script src="script.js"></script>
+</body>
+</html>
