@@ -139,24 +139,35 @@ body::before{
   .grid-3,.quotes{grid-template-columns:1fr}
 }
 
-/* Contenedor de la info de cada socio */
-.grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 2fr; /* Foto ocupa 1 parte, texto 2 partes */
-  gap: 20px;
-  align-items: center;
+/* --- Ficha de cada gerente: foto izquierda / texto derecha --- */
+.member-row{
+  display:grid;
+  grid-template-columns: minmax(260px, 360px) 1fr; /* foto | texto */
+  gap:20px;
+  align-items:start;
 }
 
-/* Imagen de socio */
-.grid-2 img {
-  width: 100%;
-  border-radius: 12px;
+.member-row .card{
+  background: transparent;   /* ya tienes glass/card arriba, aquí limpio */
+  box-shadow: none;
+  padding:0;
+}
+
+.member-row img{
+  width:100%;
+  height:auto;
+  border-radius:16px;
+  aspect-ratio: 4 / 5;       /* recorte vertical agradable */
   object-fit: cover;
 }
 
-/* Card de texto */
-.grid-2 .card {
-  background: transparent; /* Mantiene el estilo flotante */
-  box-shadow: none;
-}
+/* Botón y tipografía dentro del panel */
+.acc-panel h3{ margin-top:0; }
+.acc-panel p{ margin: 8px 0; }
 
+/* En pantallas pequeñas apilar uno debajo del otro */
+@media (max-width: 900px){
+  .member-row{
+    grid-template-columns: 1fr;
+  }
+}
