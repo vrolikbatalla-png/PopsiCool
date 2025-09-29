@@ -139,25 +139,40 @@ body::before{
   .grid-3,.quotes{grid-template-columns:1fr}
 }
 
-/* ====== FIX: Ficha de cada gerente (foto izq / texto der) ====== */
+/* ====== Fichas de gerentes: foto a la izquierda, tamaño controlado ====== */
 .member-row{
   display:flex;
   gap:20px;
   align-items:flex-start;
-  /* evita que el contenedor “colapse” por imágenes grandes */
-  min-height: 1px;
 }
 
-.photo h3 {
-  margin: 10px 0 4px;
-  font-size: 18px;
-  color: var(--green-1);
-  text-align: center;
+.member-row .photo{
+  flex:0 0 260px;          /* ancho fijo de la columna foto en desktop */
+  max-width:100%;
 }
 
-.photo .role {
-  margin: 0;
-  font-size: 14px;
-  opacity: 0.85;
-  text-align: center;
+.member-row .photo img{
+  width:100%;
+  height:320px;            /* alto controlado */
+  object-fit:cover;
+  border-radius:12px;
+}
+
+/* columna de texto ocupa el resto */
+.member-row .card{
+  flex:1;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 900px){
+  .member-row{
+    flex-direction:column; /* apila foto y texto en móvil */
+  }
+  .member-row .photo{
+    flex:0 0 auto;
+    width:100%;
+  }
+  .member-row .photo img{
+    height:280px;          /* un poco más baja en móvil */
+  }
 }
