@@ -164,6 +164,21 @@ body::before{
   object-fit:cover;
   border-radius:12px;
 }
+/* Acordeón con <details> */
+.acc { border-radius:14px; overflow:hidden; }
+
+.acc-btn{
+  display:flex; align-items:center; gap:10px; justify-content:space-between;
+  width:100%; cursor:pointer; padding:16px;
+  font-weight:700; color:var(--green-1);
+}
+.acc-btn::-webkit-details-marker{ display:none; }
+.acc summary{ list-style:none; }   /* para Firefox */
+
+.acc .chev{ transition:transform .2s ease; }
+.acc[open] .chev{ transform:rotate(180deg); }
+
+.acc-panel{ padding:0 16px 16px; } /* ¡sin display:none! */
 
 /* ===== Acordeón con <details> ===== */
 .acc { border-radius:14px; overflow:hidden; }
