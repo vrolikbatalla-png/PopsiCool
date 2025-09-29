@@ -99,15 +99,22 @@ body::before{
 .card h3{margin:10px 0 0}
 .card small{opacity:.8}
 
-/* Acordeón (Nosotros) */
-.acc{border-radius:14px; overflow:hidden}
-.acc-item + .acc-item{border-top:1px solid rgba(0,0,0,.08)}
-.acc-btn{
-  width:100%; text-align:left; background:transparent; border:0; padding:16px;
-  font-weight:700; color:var(--green-1); cursor:pointer; display:flex; justify-content:space-between; align-items:center;
+/* ===== Acordeón con <details> ===== */
+.acc { border-radius:14px; overflow:hidden; }
+
+.acc-btn {
+  display:flex; align-items:center; gap:10px; justify-content:space-between;
+  width:100%; list-style:none; cursor:pointer; padding:16px;
+  font-weight:700; color:var(--green-1);
 }
-.acc-panel{display:none; padding:0 16px 16px}
-.acc-item.open .acc-panel{display:block}
+.acc-btn::-webkit-details-marker { display:none; }
+.acc summary { list-style: none; }
+
+.acc .chev { transition: transform .2s ease; }
+.acc[open] .chev { transform: rotate(180deg); }
+
+.acc-panel { padding: 0 16px 16px; }   /* <- sin display:none */
+
 
 /* ODS badges */
 .ods{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
