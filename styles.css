@@ -138,3 +138,25 @@ body::before{
   .kpis{grid-template-columns:repeat(2,1fr)}
   .grid-3,.quotes{grid-template-columns:1fr}
 }
+
+/* Contenedor de la info de cada socio */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Foto ocupa 1 parte, texto 2 partes */
+  gap: 20px;
+  align-items: center;
+}
+
+/* Imagen de socio */
+.grid-2 img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Card de texto */
+.grid-2 .card {
+  background: transparent; /* Mantiene el estilo flotante */
+  box-shadow: none;
+}
+
