@@ -158,21 +158,36 @@ body::before{
   border-radius:12px;
 }
 
-/* columna de texto ocupa el resto */
-.member-row .card{
-  flex:1;
-}
+/* ===== Acordeón con <details> ===== */
+.acc { border-radius:14px; overflow:hidden; }
 
-/* Ajustes responsivos */
+.acc-btn {
+  display:flex; align-items:center; gap:10px; justify-content:space-between;
+  width:100%; list-style:none; cursor:pointer; padding:16px;
+  font-weight:700; color:var(--green-1);
+}
+.acc-btn::-webkit-details-marker { display:none; } /* oculta marcador por defecto */
+.acc summary { list-style: none; }                 /* Firefox */
+
+.acc .chev { transition: transform .2s ease; }
+.acc[open] .chev { transform: rotate(180deg); }
+
+.acc-panel { padding: 0 16px 16px; }
+
+/* Ficha: foto izquierda / texto derecha */
+.member-row { display:flex; gap:20px; align-items:flex-start; }
+.member-row .photo { flex:0 0 200px; max-width:100%; }
+.member-row .photo img {
+  width:100%; height:240px; object-fit:cover; border-radius:12px; display:block;
+}
+.member-row > .card { flex:1; }
+
+.photo h3{ margin:10px 0 4px; font-size:18px; color:var(--green-1); text-align:center; }
+.photo .role{ margin:0; font-size:14px; opacity:.85; text-align:center; }
+
+/* Móvil */
 @media (max-width: 900px){
-  .member-row{
-    flex-direction:column; /* apila foto y texto en móvil */
-  }
-  .member-row .photo{
-    flex:0 0 auto;
-    width:100%;
-  }
-  .member-row .photo img{
-    height:280px;          /* un poco más baja en móvil */
-  }
+  .member-row{ flex-direction:column; }
+  .member-row .photo{ flex:0 0 auto; width:100%; }
+  .member-row .photo img{ height:220px; }
 }
