@@ -29,26 +29,17 @@ document.addEventListener('click', (ev) => {
   const btn = ev.target.closest('.acc-btn');
   if (!btn) return;
 
-  ev.preventDefault(); // evita comportamientos raros
+  ev.preventDefault();
   const item = btn.closest('.acc-item');
   if (!item) return;
 
-  // intenta encontrar el contenedor .acc más cercano; si no existe, usa el padre del item;
-  // y como último recurso, opera globalmente.
-  const acc =
-    btn.closest('.acc') ||
-    item.parentElement ||
-    document;
-
-  // cierra los demás del mismo grupo
-  const group = acc.querySelectorAll
-    ? acc.querySelectorAll('.acc-item.open')
-    : document.querySelectorAll('.acc-item.open');
+  const acc = btn.closest('.acc') || item.parentElement || document;
+  const group = acc.querySelectorAll ? acc.querySelectorAll('.acc-item.open') : document.querySelectorAll('.acc-item.open');
 
   group.forEach((it) => {
     if (it !== item) it.classList.remove('open');
   });
 
-  // alterna el actual
   item.classList.toggle('open');
 });
+
