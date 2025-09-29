@@ -12,16 +12,21 @@ function animateCounter(el){
   }
   requestAnimationFrame(step);
 }
+
 function initCounters(){
-  const io = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.querySelectorAll('[data-target]').forEach(animateCounter);
-        io.unobserve(e.target);
+  const nums = document.querySelectorAll('.num[data-target]');
+  if (!nums.length) return;
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        io.unobserve(entry.target); // anima una sola vez
       }
     });
-  },{threshold:.35});
-  document.querySelectorAll('.kpis').forEach(k=>io.observe(k));
+  }, { threshold: 0.1 }); // con 10% basta
+
+  nums.forEach(n => io.observe(n));
 }
 
 // === Acordeón independiente (múltiples abiertos) ===
@@ -35,5 +40,10 @@ document.addEventListener('click', (ev) => {
 
   item.classList.toggle('open'); // no cierra a los demás
 });
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  initCounters();
+});
+
 
 
