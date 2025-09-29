@@ -24,29 +24,31 @@ function initCounters(){
   document.querySelectorAll('.kpis').forEach(k=>io.observe(k));
 }
 
-// === Acordeón PopsiCool (delegación robusta) ===
+// === Acordeón PopsiCool (robusto) ===
 document.addEventListener('click', (ev) => {
   const btn = ev.target.closest('.acc-btn');
   if (!btn) return;
 
-  // encuentra el item y el contenedor .acc correctos aunque haya wrappers
+  ev.preventDefault(); // evita comportamientos raros
   const item = btn.closest('.acc-item');
-  const acc  = btn.closest('.acc');   // <-- antes usábamos parentElement
+  if (!item) return;
 
-  if (!item || !acc) return;
+  // intenta encontrar el contenedor .acc más cercano; si no existe, usa el padre del item;
+  // y como último recurso, opera globalmente.
+  const acc =
+    btn.closest('.acc') ||
+    item.parentElement ||
+    document;
 
-  // cierra los demás dentro del MISMO acordeón
-  acc.querySelectorAll('.acc-item.open').forEach((it) => {
+  // cierra los demás del mismo grupo
+  const group = acc.querySelectorAll
+    ? acc.querySelectorAll('.acc-item.open')
+    : document.querySelectorAll('.acc-item.open');
+
+  group.forEach((it) => {
     if (it !== item) it.classList.remove('open');
   });
 
   // alterna el actual
   item.classList.toggle('open');
-});
-
-
-// Arranque
-document.addEventListener('DOMContentLoaded', ()=>{
-  initCounters();
-  // (no llames a initAccordion)
 });
