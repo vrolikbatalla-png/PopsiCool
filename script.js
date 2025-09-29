@@ -1,9 +1,8 @@
-<script>
-// ====== PopsiCool – scripts ======
+// ====== PopsiCool – scripts (versión robusta) ======
 
-// --- Contadores animados (robusto) ---
+// --- Contadores animados ---
 function animateCounter(el){
-  // Limpia lo que venga en data-target: "1,200", " 85 ", etc.
+  // Limpia el valor: permite "1,200", " 85 ", etc.
   const raw = (el.getAttribute('data-target') || '0').toString().replace(/[^\d.-]/g, '');
   const target = Number(raw) || 0;
 
@@ -11,31 +10,36 @@ function animateCounter(el){
   const start = performance.now();
 
   function step(t){
-    const p = Math.min(1, (t - start)/dur);
+    const p = Math.min(1, (t - start) / dur);
     el.textContent = Math.floor(p * target).toLocaleString();
     if (p < 1) requestAnimationFrame(step);
   }
   requestAnimationFrame(step);
 }
 
+function animateAllNow(){
+  document.querySelectorAll('.num[data-target]').forEach(animateCounter);
+}
+
 function initCounters(){
   const nums = document.querySelectorAll('.num[data-target]');
   if (!nums.length) return;
 
-  // Si IntersectionObserver existe, úsalo; si no, plan B.
+  // 1) Intenta con IntersectionObserver
   if ('IntersectionObserver' in window){
     const io = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting){
           animateCounter(entry.target);
           io.unobserve(entry.target);
+          entry.target.dataset._done = '1';
         }
       });
     }, { threshold: 0.1 });
 
     nums.forEach(n => io.observe(n));
 
-    // Plan C de seguridad: si en 1s no pasó por viewport, animar igual
+    // 2) Fallback por si IO no dispara en 1s
     setTimeout(() => {
       nums.forEach(n => {
         if (!n.dataset._done){
@@ -44,10 +48,9 @@ function initCounters(){
         }
       });
     }, 1000);
-
   } else {
-    // Plan B: navegadores sin IO
-    nums.forEach(animateCounter);
+    // 3) Navegadores sin IO
+    animateAllNow();
   }
 }
 
@@ -62,7 +65,6 @@ document.addEventListener('click', (ev) => {
 });
 
 // Arranque
-document.addEventListener('DOMContentLoaded', ()=>{
+document.addEventListener('DOMContentLoaded', () => {
   initCounters();
 });
-</script>
