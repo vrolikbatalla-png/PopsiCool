@@ -24,22 +24,16 @@ function initCounters(){
   document.querySelectorAll('.kpis').forEach(k=>io.observe(k));
 }
 
-// === Acordeón PopsiCool (robusto) ===
+// === Acordeón independiente (múltiples abiertos) ===
 document.addEventListener('click', (ev) => {
   const btn = ev.target.closest('.acc-btn');
   if (!btn) return;
-
   ev.preventDefault();
+
   const item = btn.closest('.acc-item');
   if (!item) return;
 
-  const acc = btn.closest('.acc') || item.parentElement || document;
-  const group = acc.querySelectorAll ? acc.querySelectorAll('.acc-item.open') : document.querySelectorAll('.acc-item.open');
-
-  group.forEach((it) => {
-    if (it !== item) it.classList.remove('open');
-  });
-
-  item.classList.toggle('open');
+  item.classList.toggle('open'); // no cierra a los demás
 });
+
 
