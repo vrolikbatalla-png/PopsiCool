@@ -1,9 +1,9 @@
 /* ====== PopsiCool – scripts ====== */
 
-// Contadores animados (home)
+// Contadores animados (home) – deja esto igual
 function animateCounter(el){
   const target = +el.dataset.target || 0;
-  const dur = 1200; // ms
+  const dur = 1200;
   const start = performance.now();
   function step(t){
     const p = Math.min(1, (t - start)/dur);
@@ -24,19 +24,27 @@ function initCounters(){
   document.querySelectorAll('.kpis').forEach(k=>io.observe(k));
 }
 
-// Acordeón (Nosotros)
-function initAccordion(){
-  document.querySelectorAll('.acc-btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const item = btn.closest('.acc-item');
-      const open = item.classList.contains('open');
-      document.querySelectorAll('.acc-item').forEach(i=>i.classList.remove('open'));
-      if(!open) item.classList.add('open');
-    });
-  });
-}
+// === Acordeón (delegación de eventos) – reemplaza tu initAccordion por esto
+document.addEventListener('click', (ev) => {
+  const btn = ev.target.closest('.acc-btn');
+  if (!btn) return;
 
+  const item = btn.closest('.acc-item');
+  if (!item) return;
+
+  const acc = item.parentElement; // contenedor .acc
+
+  // cierra los demás
+  acc.querySelectorAll('.acc-item.open').forEach((it) => {
+    if (it !== item) it.classList.remove('open');
+  });
+
+  // alterna el actual
+  item.classList.toggle('open');
+});
+
+// Arranque
 document.addEventListener('DOMContentLoaded', ()=>{
   initCounters();
-  initAccordion();
+  // (no llames a initAccordion)
 });
