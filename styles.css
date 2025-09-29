@@ -148,24 +148,16 @@ body::before{
   min-height: 1px;
 }
 
-/* Columna de la foto: ancho fijo y controlado */
-.member-row .photo{
-  flex: 0 0 320px;      /* ancho fijo cómodo en desktop */
-  max-width: 100%;
+.photo h3 {
+  margin: 10px 0 4px;
+  font-size: 18px;
+  color: var(--green-1);
+  text-align: center;
 }
 
-.member-row {
-  display: flex;
-  gap: 20px;           /* espacio entre foto y texto */
-  align-items: flex-start; /* alinea arriba */
-}
-
-.member-row img {
-  width: 220px;        /* tamaño uniforme para las fotos */
-  border-radius: 10px; /* esquinas redondeadas */
-  object-fit: cover;   /* ajusta bien dentro del cuadro */
-}
-
-.member-row .card {
-  flex: 1;             /* hace que el texto ocupe el resto del espacio */
+.photo .role {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.85;
+  text-align: center;
 }
