@@ -139,35 +139,44 @@ body::before{
   .grid-3,.quotes{grid-template-columns:1fr}
 }
 
-/* --- Ficha de cada gerente: foto izquierda / texto derecha --- */
+/* ====== FIX: Ficha de cada gerente (foto izq / texto der) ====== */
 .member-row{
-  display:grid;
-  grid-template-columns: minmax(260px, 360px) 1fr; /* foto | texto */
+  display:flex;
   gap:20px;
-  align-items:start;
+  align-items:flex-start;
+  /* evita que el contenedor “colapse” por imágenes grandes */
+  min-height: 1px;
 }
 
-.member-row .card{
-  background: transparent;   /* ya tienes glass/card arriba, aquí limpio */
-  box-shadow: none;
-  padding:0;
+/* Columna de la foto: ancho fijo y controlado */
+.member-row .photo{
+  flex: 0 0 320px;      /* ancho fijo cómodo en desktop */
+  max-width: 100%;
 }
 
-.member-row img{
+/* Imagen: no más de 320px de ancho y recorte elegante */
+.member-row .photo img{
   width:100%;
-  height:auto;
-  border-radius:16px;
-  aspect-ratio: 4 / 5;       /* recorte vertical agradable */
+  height:auto;          /* asegura que no “empuje” la otra columna */
+  max-height: 480px;    /* límite vertical por si suben fotos muy altas */
+  aspect-ratio: 4 / 5;  /* proporción vertical */
   object-fit: cover;
+  border-radius:16px;
 }
 
-/* Botón y tipografía dentro del panel */
-.acc-panel h3{ margin-top:0; }
-.acc-panel p{ margin: 8px 0; }
+/* Columna de texto: ocupa el espacio restante */
+.member-row .text{
+  flex: 1 1 auto;
+  min-width: 0;         /* evita que el texto fuerce salto de línea raro */
+}
 
-/* En pantallas pequeñas apilar uno debajo del otro */
+/* Neutraliza estilos viejos que agrandaban la imagen o sumaban rellenos */
+.acc-panel .card{ background: transparent; box-shadow: none; padding: 0; border: 0; }
+.acc-panel .card img{ max-width:100%; height:auto; }
+
+/* En móvil, apilar */
 @media (max-width: 900px){
-  .member-row{
-    grid-template-columns: 1fr;
-  }
+  .member-row{ flex-direction: column; }
+  .member-row .photo{ flex: 0 0 auto; max-width: 100%; }
+  .member-row .photo img{ max-height: 420px; }
 }
