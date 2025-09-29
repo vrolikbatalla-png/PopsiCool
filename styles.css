@@ -213,3 +213,25 @@ body::before{
   .member-row .photo{ flex:0 0 auto; width:100%; }
   .member-row .photo img{ height:220px; }
 }
+
+
+/* ==== SOCIOS: foto más alta y menos ancha (retrato) ==== */
+.member-row .photo{
+  flex: 0 0 180px;   /* columna más angosta (ajusta 160–200px a gusto) */
+  max-width: 100%;
+}
+
+.member-row .photo img{
+  width: 100%;
+  height: auto;           /* deja que la altura se calcule por la proporción */
+  aspect-ratio: 2 / 3;    /* RETRATO: 2:3 (más alto que ancho). Prueba 3/5 o 4/7 si la quieres aún más alta */
+  object-fit: cover;      /* recorte elegante si la foto original no calza */
+  border-radius: 12px;
+}
+
+/* Móvil: que ocupen bien el ancho y mantengan retrato */
+@media (max-width: 900px){
+  .member-row .photo{ flex: 0 0 auto; width: 100%; }
+  .member-row .photo img{ aspect-ratio: 2 / 3; }
+}
+
