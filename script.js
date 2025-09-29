@@ -24,17 +24,18 @@ function initCounters(){
   document.querySelectorAll('.kpis').forEach(k=>io.observe(k));
 }
 
-// === Acordeón (delegación de eventos) – reemplaza tu initAccordion por esto
+// === Acordeón PopsiCool (delegación robusta) ===
 document.addEventListener('click', (ev) => {
   const btn = ev.target.closest('.acc-btn');
   if (!btn) return;
 
+  // encuentra el item y el contenedor .acc correctos aunque haya wrappers
   const item = btn.closest('.acc-item');
-  if (!item) return;
+  const acc  = btn.closest('.acc');   // <-- antes usábamos parentElement
 
-  const acc = item.parentElement; // contenedor .acc
+  if (!item || !acc) return;
 
-  // cierra los demás
+  // cierra los demás dentro del MISMO acordeón
   acc.querySelectorAll('.acc-item.open').forEach((it) => {
     if (it !== item) it.classList.remove('open');
   });
@@ -42,6 +43,7 @@ document.addEventListener('click', (ev) => {
   // alterna el actual
   item.classList.toggle('open');
 });
+
 
 // Arranque
 document.addEventListener('DOMContentLoaded', ()=>{
