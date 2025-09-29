@@ -154,29 +154,18 @@ body::before{
   max-width: 100%;
 }
 
-/* Imagen: no más de 320px de ancho y recorte elegante */
-.member-row .photo img{
-  width:100%;
-  height:auto;          /* asegura que no “empuje” la otra columna */
-  max-height: 480px;    /* límite vertical por si suben fotos muy altas */
-  aspect-ratio: 4 / 5;  /* proporción vertical */
-  object-fit: cover;
-  border-radius:16px;
+.member-row {
+  display: flex;
+  gap: 20px;           /* espacio entre foto y texto */
+  align-items: flex-start; /* alinea arriba */
 }
 
-/* Columna de texto: ocupa el espacio restante */
-.member-row .text{
-  flex: 1 1 auto;
-  min-width: 0;         /* evita que el texto fuerce salto de línea raro */
+.member-row img {
+  width: 220px;        /* tamaño uniforme para las fotos */
+  border-radius: 10px; /* esquinas redondeadas */
+  object-fit: cover;   /* ajusta bien dentro del cuadro */
 }
 
-/* Neutraliza estilos viejos que agrandaban la imagen o sumaban rellenos */
-.acc-panel .card{ background: transparent; box-shadow: none; padding: 0; border: 0; }
-.acc-panel .card img{ max-width:100%; height:auto; }
-
-/* En móvil, apilar */
-@media (max-width: 900px){
-  .member-row{ flex-direction: column; }
-  .member-row .photo{ flex: 0 0 auto; max-width: 100%; }
-  .member-row .photo img{ max-height: 420px; }
+.member-row .card {
+  flex: 1;             /* hace que el texto ocupe el resto del espacio */
 }
